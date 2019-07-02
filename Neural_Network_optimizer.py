@@ -179,7 +179,8 @@ class NeuralNetwork(object):
                 nabla_b, nabla_w=self.update_mini_batch(mini_batch, eta)
 
                 decayed_learning_rate = (eta/len(mini_batch)) * decay_rate**(j / decay_steps)
-                # decayed_learning_rate为每一轮优化时使用的学习率，learning_rate为事先设定的初始学习率，decay_rate为衰减系数，global_step为迭代次数，decay_steps为衰减速度（即迭代多少次进行衰减）
+                # decayed_learning_rate为每一轮优化时使用的学习率，learning_rate为事先设定的初始学习率，
+                #decay_rate为衰减系数，global_step为迭代次数，decay_steps为衰减速度（即迭代多少次进行衰减）
                 # 梯度下降更新
                 self.weights = [w - decayed_learning_rate*nw for w, nw in zip(self.weights, nabla_w)]
                 self.biases = [b - decayed_learning_rate*nb for b, nb in zip(self.biases, nabla_b)]
